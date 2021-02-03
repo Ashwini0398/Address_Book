@@ -25,7 +25,23 @@ public class AddressBookMain {
 		return new Person(firstName, lastName, address, city, state, zipCode, phoneNumber);
 	}
 	
+	static Person editPersonDetails(Person person) {
+		Scanner sc = new Scanner(System.in);
 
+		System.out.println("Enter the Address");
+		person.address = sc.next();
+		System.out.println("Enter the City");
+		person.city = sc.next();
+		System.out.println("Enter the State");
+		person.state = sc.next();
+		System.out.println("Enter the ZipCode");
+		person.zipCode = sc.nextInt();
+		System.out.println("Enter the contact number...");
+		person.phoneNumber = sc.next();
+		return person;
+
+	}
+	
 	public static void main(String[] args) {
 	
 			Person person = getDataFromConsole(); //get the data from the console
@@ -36,9 +52,25 @@ public class AddressBookMain {
 				System.out.println("Enter ur choice press 1 For Add person  ");
 				choice = sc.nextInt();
 				switch (choice) {
+
 				case 1:
 					person = getDataFromConsole();
 					break;
+					
+				case 2:
+					System.out.println("Edit the person details");
+					String Firstname= sc.next();
+					if(Firstname.equals(person.firstName))
+					{
+						person=editPersonDetails(person);
+					}
+					else
+					{
+						System.out.println(Firstname+" Invaild entry ");
+					}
+					System.out.println(person);
+					break;
+
 				default:
 					System.out.println("Enter valid number");
 				}
