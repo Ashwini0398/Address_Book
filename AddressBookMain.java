@@ -3,9 +3,16 @@ package com.book;
 import java.util.*;
 
 public class AddressBookMain {
+
+	ArrayList<Person> al=null;
+	AddressBookMain(){
+		al=new ArrayList();
+	}
+	Scanner sc = new Scanner(System.in);
+	Person person=null;
 	
-	static Person getDataFromConsole() {
-		Scanner sc = new Scanner(System.in);
+	public void getDataFromConsole() {
+		
 		System.out.println("Enter the Details of Person");
 		System.out.println("Enter the first name");
 		String firstName = sc.next();
@@ -22,11 +29,11 @@ public class AddressBookMain {
 		System.out.println("Enter the contact number...");
 		String phoneNumber = sc.next();
 
-		return new Person(firstName, lastName, address, city, state, zipCode, phoneNumber);
+		al.add( new Person(firstName, lastName, address, city, state, zipCode, phoneNumber));
 	}
 	
-	static Person editPersonDetails(Person person) {
-		Scanner sc = new Scanner(System.in);
+	public void editPersonDetails(Person person) {
+		
 
 		System.out.println("Enter the Address");
 		person.address = sc.next();
@@ -38,18 +45,26 @@ public class AddressBookMain {
 		person.zipCode = sc.nextInt();
 		System.out.println("Enter the contact number...");
 		person.phoneNumber = sc.next();
-		return person;
-
 	}
 	
-	static Person deletePersonDetails(Person person)
+	public void deletePersonDetails(Person person)
 	{
-			return null;
+		
+		String Firstname1= sc.next();
+		ArrayList<Person> personlist1 = al;
+		for (int i=0; i<personlist1.size();i++)
+		{
+			if(personlist1.get(i).firstName.equals(Firstname1))
+			{
+				
+				personlist1.remove(i);
+			}
+		}
 	}
 
 	public static void main(String[] args) {
 	
-			Person person = getDataFromConsole(); //get the data from the console
+			AddressBookMain ab = new AddressBookMain();
 			int choice;
 			 while(true)
 			 {
@@ -59,34 +74,30 @@ public class AddressBookMain {
 				switch (choice) {
 
 				case 1:
-					person = getDataFromConsole();
+					ab.getDataFromConsole();
 					break;
 					
 				case 2:
 					System.out.println("Edit the person details");
 					String Firstname= sc.next();
-					if(Firstname.equals(person.firstName))
+					ArrayList<Person> personlist = ab.al;
+					for (int i=0; i<personlist.size();i++)
 					{
-						person=editPersonDetails(person);
-					}
-					else
-					{
+						if(personlist.get(i).firstName.equals(Firstname))
+						{
+							
+							Person p = personlist.get(i);
+							ab.editPersonDetails(p);
+						}
+										{
 						System.out.println(Firstname+" Invaild entry ");
+						}
 					}
-					System.out.println(person);
 					break;
+
 				case 3:
-					System.out.println("delete the person details");
-					String Firstname1= sc.next();
-					if(Firstname1.equals(person.firstName))
-					{
-						person=deletePersonDetails(person);
-					}
-					else
-					{
-						System.out.println(Firstname1+" Invaild entry ");
-					}
-					
+			
+					ab.deletePersonDetails();
 					break;
 					
 				case 4:

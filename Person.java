@@ -26,5 +26,4 @@ public class Person {
 				+ city + ", state=" + state + ", zipcode=" + zipCode + ", phoneNumber=" + phoneNumber + "]";
 	}
 	
-	
 }
