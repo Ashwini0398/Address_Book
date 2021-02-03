@@ -42,6 +42,11 @@ public class AddressBookMain {
 
 	}
 	
+	static Person deletePersonDetails(Person person)
+	{
+			return null;
+	}
+
 	public static void main(String[] args) {
 	
 			Person person = getDataFromConsole(); //get the data from the console
@@ -70,6 +75,24 @@ public class AddressBookMain {
 					}
 					System.out.println(person);
 					break;
+				case 3:
+					System.out.println("delete the person details");
+					String Firstname1= sc.next();
+					if(Firstname1.equals(person.firstName))
+					{
+						person=deletePersonDetails(person);
+					}
+					else
+					{
+						System.out.println(Firstname1+" Invaild entry ");
+					}
+					
+					break;
+					
+				case 4:
+					System.out.println(person);
+					break;
+					
 
 				default:
 					System.out.println("Enter valid number");
