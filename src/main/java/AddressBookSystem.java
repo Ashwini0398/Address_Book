@@ -165,12 +165,12 @@ class AddressBookSystem {
                 case 6:
                     System.out.println("Enter the State Name to view : ");
                     String stateNameView = sc.next();
-                    addressBookSystem.viewPersonByCityName(stateNameView);
+                    addressBookSystem.viewPersonByStateName(stateNameView);
                     break;
                 case 7:
                     System.out.println("Enter the city Name to view: ");
                     String cityNameView = sc.next();
-                    addressBookSystem.viewPersonByStateName(cityNameView);
+                    addressBookSystem.viewPersonByCityName(cityNameView);
                     break;
 
                 case 8: {
