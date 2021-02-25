@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class AddressBookMain {
 
@@ -81,9 +82,33 @@ public class AddressBookMain {
                 flag = 1;
                 break;
             }
-
         }
         return flag == 1;
+    }
+
+    public void getPersonNameByState(String State)
+    {
+        List<Person> listOfPerson = contactList.stream()
+                                                .filter(person -> person.getState().equals(State))
+                                                .collect(Collectors.toList());
+        for(Person person: listOfPerson)
+        {
+            System.out.println("First Name:"+person.getFirstName());
+            System.out.println("Last Name:"+person.getLastName());
+
+        }
+    }
+
+    public void getPersonNameByCity(String City)
+    {
+        List<Person> listOfPerson = contactList.stream()
+                                            .filter(person -> person.getCity().equals(City))
+                                            .collect(Collectors.toList());
+        for(Person person: listOfPerson)
+        {
+            System.out.println("First Name:"+person.getFirstName());
+            System.out.println("Last Name:"+person.getLastName());
+        }
     }
 }
 

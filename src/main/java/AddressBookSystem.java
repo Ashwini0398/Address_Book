@@ -42,6 +42,27 @@ class AddressBookSystem {
 
     }
 
+    public void sortPersonByStateName(String stateName)
+    {
+        for(Map.Entry<String,AddressBookMain> entry: multipleAddressBook.entrySet())
+        {
+            AddressBookMain value = entry.getValue();
+            System.out.println("The Address Book:"+entry.getKey());
+            value.getPersonNameByState(stateName);
+        }
+
+    }
+
+    public void sortPersonByCityName(String cityName)
+    {
+        for(Map.Entry<String,AddressBookMain> entry: multipleAddressBook.entrySet())
+        {
+            AddressBookMain value = entry.getValue();
+            System.out.println("The Address Book:"+entry.getKey());
+            value.getPersonNameByState(cityName);
+        }
+
+    }
     public void displayAddressBook()
     {
         for(String i: multipleAddressBook.keySet())
@@ -58,8 +79,10 @@ class AddressBookSystem {
             System.out.println("1.Add New Address Book");
             System.out.println("2.Edit the address book ");
             System.out.println("3.Delete the address book");
-            System.out.println("4.Display");
-            System.out.println("5.Exit");
+            System.out.println("4.Sort the address book by State Name");
+            System.out.println("5.Sort the address book By City Name");
+            System.out.println("6.Display");
+            System.out.println("7.Exit");
 
             System.out.println("Enter choice: ");
             int option = sc.nextInt();
@@ -92,13 +115,23 @@ class AddressBookSystem {
                         System.out.println("Address book cannot be deleted");
                     }
                     break;
+                case 4:
+                    System.out.println("Enter the State Name: ");
+                    String stateName = sc.next();
+                    addressBookSystem.sortPersonByStateName(stateName);
+                    break;
 
-                case 4: {
+                case 5:
+                    System.out.println("Enter the City Name: ");
+                    String cityName= sc.next();
+                    addressBookSystem.sortPersonByCityName(cityName);
+                    break;
+                case 6: {
                     addressBookSystem.displayAddressBook();
-                    ;
+
                     break;
                 }
-                case 5: {
+                case 7: {
                         System.exit(0);
                         break;
                     }
