@@ -56,7 +56,7 @@ public class Person
     }
 
     public void setState(String state) {
-        this.state = state;
+         this.state = state;
     }
 
     public String getEmail() {

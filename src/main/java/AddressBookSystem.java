@@ -97,6 +97,38 @@ class AddressBookSystem {
             }
         }
     }
+    public void CountByState(String state) {
+        int count = 0;
+        for(Map.Entry<String, AddressBookMain> entry: multipleAddressBook.entrySet()){
+            for(int i=0;i<(entry.getValue()).contactList.size();i++)
+            {
+                Person contact= entry.getValue().contactList.get(i);
+
+                if(state.equals(contact.getState()))
+                {
+                    count++;
+                }
+            }
+        }
+        System.out.println("Total Person Count in state "+state+": "+count);
+    }
+
+    public void CountByCity(String city) {
+        int count = 0;
+        for(Map.Entry<String, AddressBookMain> entry: multipleAddressBook.entrySet()){
+            for(int i=0;i<(entry.getValue()).contactList.size();i++)
+            {
+                Person contact= entry.getValue().contactList.get(i);
+
+                if(city.equals(contact.getState()))
+                {
+                    count++;
+                }
+            }
+        }
+        System.out.println("Total Person Count in city "+city+": "+count);
+    }
+
     public void displayAddressBook()
     {
         for(String i: multipleAddressBook.keySet())
@@ -117,8 +149,10 @@ class AddressBookSystem {
             System.out.println("5.Sort the address book By City Name");
             System.out.println("6.view the person details by State Name");
             System.out.println("7.view the person details by City Name");
-            System.out.println("8.Display");
-            System.out.println("9.Exit");
+            System.out.println("8.Count Contact By State");
+            System.out.println("9.Count Contact By City");
+            System.out.println("10.Display");
+            System.out.println("11.Exit");
 
             System.out.println("Enter choice: ");
             int option = sc.nextInt();
@@ -172,13 +206,23 @@ class AddressBookSystem {
                     String cityNameView = sc.next();
                     addressBookSystem.viewPersonByCityName(cityNameView);
                     break;
+                case 8:
+                    System.out.println("Enter the State Name to count : ");
+                    String stateNameCount = sc.next();
+                    addressBookSystem.CountByState(stateNameCount);
+                    break;
+                case 9:
+                    System.out.println("Enter the city Name to count: ");
+                    String cityNameCount = sc.next();
+                    addressBookSystem.CountByCity(cityNameCount);
+                    break;
 
-                case 8: {
+                case 10: {
                     addressBookSystem.displayAddressBook();
 
                     break;
                 }
-                case 9: {
+                case 11: {
                         System.exit(1);
                         break;
                     }
