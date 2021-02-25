@@ -52,7 +52,7 @@ public class Person
     }
 
     public String getState() {
-        return state;
+         return state;
     }
 
     public void setState(String state) {
