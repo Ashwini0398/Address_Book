@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 class AddressBookSystem {
     public static Scanner sc = new Scanner(System.in);
@@ -129,6 +130,21 @@ class AddressBookSystem {
         System.out.println("Total Person Count in city "+city+": "+count);
     }
 
+    private void sortContactByName() {
+        for (Map.Entry<String,AddressBookMain>entry:multipleAddressBook.entrySet()){
+            AddressBookMain value = entry.getValue();
+            List<Person> sortedList = value.contactList.stream()
+                                                    .sorted(Comparator.comparing(Person::getFirstName))
+                                                    .collect(Collectors.toList());
+
+            for(Person contact:sortedList){
+                System.out.println("First Name: "+contact.getFirstName());
+                System.out.println("Last Name: "+contact.getLastName());
+                System.out.println("-------------------------");
+            }
+        }
+    }
+
     public void displayAddressBook()
     {
         for(String i: multipleAddressBook.keySet())
@@ -151,8 +167,9 @@ class AddressBookSystem {
             System.out.println("7.view the person details by City Name");
             System.out.println("8.Count Contact By State");
             System.out.println("9.Count Contact By City");
-            System.out.println("10.Display");
-            System.out.println("11.Exit");
+            System.out.println("10.Sort person by Name");
+            System.out.println("11.Display");
+            System.out.println("12.Exit");
 
             System.out.println("Enter choice: ");
             int option = sc.nextInt();
@@ -216,13 +233,16 @@ class AddressBookSystem {
                     String cityNameCount = sc.next();
                     addressBookSystem.CountByCity(cityNameCount);
                     break;
-
-                case 10: {
+                case 10:
+                    System.out.println("Sort contact ");
+                    addressBookSystem.sortContactByName();
+                    break;
+                case 11: {
                     addressBookSystem.displayAddressBook();
 
                     break;
                 }
-                case 11: {
+                case 12: {
                         System.exit(1);
                         break;
                     }

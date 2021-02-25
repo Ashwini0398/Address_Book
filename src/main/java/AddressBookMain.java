@@ -16,7 +16,7 @@ public class AddressBookMain {
     }
 
     public ArrayList<Person> addContactDetails() {
-        System.out.println("Enter the Details of ContactDetails");
+        System.out.println(" Enter the Details of ContactDetails");
         System.out.println("Enter the first name");
         String firstName = sc.next();
         if (checkDuplicate(firstName)) {
