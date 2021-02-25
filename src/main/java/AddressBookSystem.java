@@ -59,7 +59,7 @@ class AddressBookSystem {
         {
             AddressBookMain value = entry.getValue();
             System.out.println("The Address Book:"+entry.getKey());
-            value.getPersonNameByState(cityName);
+            value.getPersonNameByCity(cityName);
         }
 
     }
@@ -165,12 +165,12 @@ class AddressBookSystem {
                 case 6:
                     System.out.println("Enter the State Name to view : ");
                     String stateNameView = sc.next();
-                    addressBookSystem.sortPersonByStateName(stateNameView);
+                    addressBookSystem.viewPersonByCityName(stateNameView);
                     break;
                 case 7:
                     System.out.println("Enter the city Name to view: ");
                     String cityNameView = sc.next();
-                    addressBookSystem.sortPersonByStateName(cityNameView);
+                    addressBookSystem.viewPersonByStateName(cityNameView);
                     break;
 
                 case 8: {

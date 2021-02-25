@@ -121,6 +121,7 @@ public class AddressBookMain {
 
     public void getPersonNameByCity(String City)
     {
+
         List<Person> listOfPerson = contactList.stream()
                                             .filter(person -> person.getCity().equals(City))
                                             .collect(Collectors.toList());
