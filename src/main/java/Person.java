@@ -1,4 +1,5 @@
-public class Person {
+public class Person
+{
     private String firstName, lastName, address, city, state, email, zip, phoneNumber ;
 
     public Person(String firstName, String lastName, String address, String city, String state,

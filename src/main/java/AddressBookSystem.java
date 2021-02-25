@@ -40,7 +40,6 @@ class AddressBookSystem {
             System.out.println("Address book Cannot be deleted");
         }
 
-
     }
 
     public void displayAddressBook()
