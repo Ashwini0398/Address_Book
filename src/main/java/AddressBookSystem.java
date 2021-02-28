@@ -4,9 +4,9 @@ import java.util.stream.Collectors;
 class AddressBookSystem {
     public static Scanner sc = new Scanner(System.in);
     private static AddressBookMain addressBook = new AddressBookMain();
-    public Map<String, AddressBookMain> multipleAddressBook = new HashMap<>();
+    public static Map<String, AddressBookMain> multipleAddressBook = new HashMap<>();
 
-    public void addAddressBook(String bookName) {
+    public static void addAddressBook(String bookName) {
         if (multipleAddressBook.containsKey(bookName)) {
             System.out.println("The Address book Already Exists");
         } else {
@@ -130,7 +130,7 @@ class AddressBookSystem {
         System.out.println("Total Person Count in city "+city+": "+count);
     }
 
-    private void sortContactByName() {
+    public void sortContactByName() {
         for (Map.Entry<String,AddressBookMain>entry:multipleAddressBook.entrySet()){
             AddressBookMain value = entry.getValue();
             List<Person> sortedList = value.contactList.stream()
@@ -175,6 +175,8 @@ class AddressBookSystem {
         }
     }
 
+
+
     public void displayAddressBook()
     {
         for(String i: multipleAddressBook.keySet())
@@ -200,8 +202,10 @@ class AddressBookSystem {
             System.out.println("10.Sort person by Name");
             System.out.println("11.Sort contact by State");
             System.out.println("12.Sort person by City");
-            System.out.println("13.Display");
-            System.out.println("14.Exit");
+            System.out.println("13.Write the data ");
+            System.out.println("14.Read the data");
+            System.out.println("15.Display");
+            System.out.println("16.Exit");
 
             System.out.println("Enter choice: ");
             int option = sc.nextInt();
@@ -285,12 +289,21 @@ class AddressBookSystem {
                     addressBookSystem.sortContactByCity();
                     break;
 
-                case 13:{
-                    addressBookSystem.displayAddressBook();
+                case 13:
+                    System.out.println("Write the data  ");
+                    addressBook.writePersonData(addressBookSystem);
+                    break;
 
+                case 14:
+                    System.out.println("Read the data ");
+                    addressBook.readPersonData(addressBookSystem);
+                    break;
+
+                case 15:{
+                    addressBookSystem.displayAddressBook();
                     break;
                 }
-                case 14: {
+                case 16: {
                         System.exit(1);
                         break;
                     }

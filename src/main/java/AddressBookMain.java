@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -131,6 +135,34 @@ public class AddressBookMain {
         {
             System.out.println("First Name:"+person.getFirstName());
             System.out.println("Last Name:"+person.getLastName());
+        }
+    }
+
+
+    public void writePersonData(AddressBookSystem addressBookSystem) {
+        StringBuffer personBuffer = new StringBuffer();
+        contactList.forEach(person -> {
+            String personDataString = person.toString().concat("\n");
+            personBuffer.append(personDataString);
+        });
+        try {
+            Files.write(Paths.get("F:\\personData.txt"), personBuffer.toString().getBytes());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+    public void readPersonData( AddressBookSystem addressBookSystem) {
+        try {
+            Files.lines(new File("F:\\personData.txt").toPath())
+                                                                    .map(String::trim)
+                                                                    .forEach(System.out::println);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
         }
     }
 }
