@@ -1,3 +1,7 @@
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -204,8 +208,10 @@ class AddressBookSystem {
             System.out.println("12.Sort person by City");
             System.out.println("13.Write the data ");
             System.out.println("14.Read the data");
-            System.out.println("15.Display");
-            System.out.println("16.Exit");
+            System.out.println("15.Write the csv data ");
+            System.out.println("16.Read the csv data");
+            System.out.println("17.Display");
+            System.out.println("18.Exit");
 
             System.out.println("Enter choice: ");
             int option = sc.nextInt();
@@ -298,12 +304,26 @@ class AddressBookSystem {
                     System.out.println("Read the data ");
                     addressBook.readPersonData(addressBookSystem);
                     break;
+                case 15:
+                    try {
+                        AddressBookMain.writeDataToCSV();
+                    } catch (IOException | CsvDataTypeMismatchException | CsvRequiredFieldEmptyException e) {
+                        e.printStackTrace();
+                    }
+                    break;
 
-                case 15:{
+                case 16:
+                    try {
+                        AddressBookMain.readDataUsingCSV();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                case 17:{
                     addressBookSystem.displayAddressBook();
                     break;
                 }
-                case 16: {
+                case 18: {
                         System.exit(1);
                         break;
                     }

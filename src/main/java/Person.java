@@ -60,7 +60,8 @@ public class Person
          this.state = state;
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
