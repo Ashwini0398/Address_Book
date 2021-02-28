@@ -145,6 +145,36 @@ class AddressBookSystem {
         }
     }
 
+    public void sortContactByState() {
+        for (Map.Entry<String,AddressBookMain>entry:multipleAddressBook.entrySet()){
+            AddressBookMain value = entry.getValue();
+            List<Person> sortedList = value.contactList.stream()
+                                                        .sorted(Comparator.comparing(Person::getState))
+                                                        .collect(Collectors.toList());
+
+            for(Person contact:sortedList){
+                System.out.println("Enter the First Name: "+contact.getFirstName());
+                System.out.println("Enter the Last Name: "+contact.getLastName());
+                System.out.println("-------------------------------");
+            }
+        }
+    }
+
+    public void sortContactByCity() {
+        for (Map.Entry<String,AddressBookMain>entry:multipleAddressBook.entrySet()){
+            AddressBookMain value = entry.getValue();
+            List<Person> sortedList = value.contactList.stream()
+                                                        .sorted(Comparator.comparing(Person::getCity))
+                                                        .collect(Collectors.toList());
+
+            for(Person contact:sortedList){
+                System.out.println("Enter the First Name: "+contact.getFirstName());
+                System.out.println("Enter the Last Name: "+contact.getLastName());
+                System.out.println("-------------------------------");
+            }
+        }
+    }
+
     public void displayAddressBook()
     {
         for(String i: multipleAddressBook.keySet())
@@ -168,8 +198,10 @@ class AddressBookSystem {
             System.out.println("8.Count Contact By State");
             System.out.println("9.Count Contact By City");
             System.out.println("10.Sort person by Name");
-            System.out.println("11.Display");
-            System.out.println("12.Exit");
+            System.out.println("11.Sort contact by State");
+            System.out.println("12.Sort person by City");
+            System.out.println("13.Display");
+            System.out.println("14.Exit");
 
             System.out.println("Enter choice: ");
             int option = sc.nextInt();
@@ -219,31 +251,46 @@ class AddressBookSystem {
                     String stateNameView = sc.next();
                     addressBookSystem.viewPersonByStateName(stateNameView);
                     break;
+
                 case 7:
                     System.out.println("Enter the city Name to view: ");
                     String cityNameView = sc.next();
                     addressBookSystem.viewPersonByCityName(cityNameView);
                     break;
+
                 case 8:
                     System.out.println("Enter the State Name to count : ");
                     String stateNameCount = sc.next();
                     addressBookSystem.CountByState(stateNameCount);
                     break;
+
                 case 9:
                     System.out.println("Enter the city Name to count: ");
                     String cityNameCount = sc.next();
                     addressBookSystem.CountByCity(cityNameCount);
                     break;
+
                 case 10:
                     System.out.println("Sort contact ");
                     addressBookSystem.sortContactByName();
                     break;
-                case 11: {
+
+                case 11:
+                    System.out.println("Sort contact by state ");
+                    addressBookSystem.sortContactByState();
+                    break;
+
+                case 12:
+                    System.out.println("Sort contact by City ");
+                    addressBookSystem.sortContactByCity();
+                    break;
+
+                case 13:{
                     addressBookSystem.displayAddressBook();
 
                     break;
                 }
-                case 12: {
+                case 14: {
                         System.exit(1);
                         break;
                     }
